@@ -5,17 +5,83 @@ html(ng-app='app')
   block styles
     link(rel='stylesheet' href='docs/vendor.css')
 
+  style.
+    .demo {
+      margin-bottom: 5em;
+    }
+
+    .demo .mn-layout-container > div {
+      margin: 0 auto;
+    }
+
+    @media (max-width: 599px) {
+      mn-option {text-align: center}
+    }
+
+    @media (min-width: 600px) {
+      .demo .mn-layout-container > div {
+        width: 80%;
+      }
+    }
+
+    .demo h3 {
+      margin-top: 7em;
+      padding-bottom: .5em;
+      color: #868e96;
+    }
+
 body(ng-controller='IndexController as controller')
   h2 angular-mn-option
   include github-corner
 
-  .mn-layout-fullscreen.mn-layout-centered
+  form.demo.mn-layout-fullscreen.mn-layout-centered
+    //- h3.align-center tests
+    //- div(style='text-align: center; width: 100%')
+      mn-option.natural.flex(value='string 1')
+      mn-option.natural.flex(value='string 2')
+
+    //- .mn-layout-container
+      h3.align-center checkbox with different values
+      //- .mn-layout-column.mn-layout-sm-row(style='flex-wrap: wrap')
+      div(style='text-align: center')
+        mn-option.natural.flex(placeholder='string' name='list' type='checkbox' value='test5' checked)
+        mn-option.natural.flex(placeholder='object' name='list' type='checkbox' value='{name: "lannister"}')
+        mn-option.natural.flex(placeholder='number' name='list' type='checkbox' value='5')
+        mn-option.natural.flex(placeholder='true' name='list' type='checkbox' value='true')
+        mn-option.natural.flex(placeholder='false' name='list' type='checkbox' value='false')
+        mn-option.natural.flex(placeholder='array' name='list' type='checkbox' value='["test", 5]')
+        mn-option.natural.flex(name='list' type='checkbox' value='["test", 5, {name: "test"}, name: "test"]')
+        mn-option.natural.flex(placeholder='mixed' name='list' type='checkbox' value='["test", 5, {name: "test"}, name: "test"]')
+        mn-option.natural.flex(placeholder='variable' name='list' type='checkbox' value='document')
+          
     .mn-layout-container
-      mn-form.mn-layout-column.mn-layout-sm-row
-        mn-option.flex#username(placeholder='username' ng-model='controller.username')
-        mn-option.flex#firstname(placeholder='firtname' ng-model='controller.firstname')
-        mn-option.flex#lastname(placeholder='lastname' ng-model='controller.lastname')
-        //- button submit
+      h3.align-center radio type: {{ controller.list ? controller.list : 'undefined' }}
+      .mn-layout-column.mn-layout-sm-row
+        mn-option.flex(name='list' type='radio' value='stark' ng-model='controller.list')
+        mn-option.flex(name='list' type='radio' value='targaryen' ng-model='controller.list')
+        mn-option.flex(name='list' type='radio' value='baratheon' ng-model='controller.list')
+        mn-option.flex(name='list' type='radio' value='lannister' ng-model='controller.list')
+
+      h3.align-center checkbox type: {{ controller.list2 }}
+      .mn-layout-column.mn-layout-sm-row
+        mn-option.flex(name='list2' type='checkbox' value='ned' ng-model='controller.list2')
+        mn-option.flex(name='list2' type='checkbox' value='daenerys' ng-model='controller.list2')
+        mn-option.flex(name='list2' type='checkbox' value='robert' ng-model='controller.list2')
+        mn-option.flex(name='list2' type='checkbox' value='cersei' ng-model='controller.list2')
+      
+      h3.align-center natural checkbox type: {{ controller.list3 }}
+      .mn-layout-column.mn-layout-sm-row
+        mn-option.natural.flex(name='list3' type='checkbox' value='ned' ng-model='controller.list3')
+        mn-option.natural.flex(name='list3' type='checkbox' value='daenerys' ng-model='controller.list3')
+        mn-option.natural.flex(name='list3' type='checkbox' value='robert' ng-model='controller.list3')
+        mn-option.natural.flex(name='list3' type='checkbox' value='cersei' ng-model='controller.list3')
+
+      h3.align-center natural radio type: {{ controller.list4 ? controller.list4 : 'undefined' }}
+      .mn-layout-column.mn-layout-sm-row
+        mn-option.natural.flex(name='list4' type='radio' value='ned' ng-model='controller.list4')
+        mn-option.natural.flex(name='list4' type='radio' value='daenerys' ng-model='controller.list4')
+        mn-option.natural.flex(name='list4' type='radio' value='robert' ng-model='controller.list4')
+        mn-option.natural.flex(name='list4' type='radio' value='cersei' ng-model='controller.list4')
 
   .docs.mn-layout-container
     mn-code.sh.
@@ -34,9 +100,9 @@ body(ng-controller='IndexController as controller')
 
     mn-code.html.
       <!-- checkbox -->
-      <mn-option ng-model="house" value="stark"></mn-option>
-      <mn-option ng-model="house" value="lannister"></mn-option>
-      <mn-option ng-model="house" value="targaryen"></mn-option>
+      <mn-option name="house" ng-model="house" value="stark"></mn-option>
+      <mn-option name="house" ng-model="house" value="lannister"></mn-option>
+      <mn-option name="house" ng-model="house" value="targaryen"></mn-option>
 
     p For more details check <a href="https://github.com/minimalist-components/mn-option">mn-option docs</a>.
 
@@ -56,6 +122,9 @@ body(ng-controller='IndexController as controller')
       .controller('IndexController', IndexController);
 
     function IndexController() {
-      this.test = 'lero'
+      this.list = 'stark'
+      this.list2 = ['daenerys', 'cersei']
+      this.list3 = ['daenerys', 'robert']
+      this.list4 = 'daenerys'
     }
 

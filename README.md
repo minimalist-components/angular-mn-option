@@ -31,9 +31,9 @@ Add to your html, the tag ```mn-option``` with respective type, default is check
 
 ```html
 <!-- checkbox -->
-<mn-option ng-model="house" value="stark"></mn-option>
-<mn-option ng-model="house" value="lannister"></mn-option>
-<mn-option ng-model="house" value="targaryen"></mn-option>
+<mn-option name="house" ng-model="house" value="stark"></mn-option>
+<mn-option name="house" ng-model="house" value="lannister"></mn-option>
+<mn-option name="house" ng-model="house" value="targaryen"></mn-option>
 ```
 
 
