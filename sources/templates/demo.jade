@@ -1,0 +1,61 @@
+html(ng-app='app')
+  meta(name='viewport' content='width=device-width, user-scalable=no')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css')
+
+  block styles
+    link(rel='stylesheet' href='docs/vendor.css')
+
+body(ng-controller='IndexController as controller')
+  h2 angular-mn-option
+  include github-corner
+
+  .mn-layout-fullscreen.mn-layout-centered
+    .mn-layout-container
+      mn-form.mn-layout-column.mn-layout-sm-row
+        mn-option.flex#username(placeholder='username' ng-model='controller.username')
+        mn-option.flex#firstname(placeholder='firtname' ng-model='controller.firstname')
+        mn-option.flex#lastname(placeholder='lastname' ng-model='controller.lastname')
+        //- button submit
+
+  .docs.mn-layout-container
+    mn-code.sh.
+      npm install --save angular-mn-option
+
+    p And bundle dependencies and main files in <strong>dist/</strong> with your preferred tool.
+
+    h3 usage
+    mn-code.js.
+      // add dependency in you module
+      angular.module('app', [
+        'mn-option'
+      ]);
+
+    p And then, in your html, you can use the tag
+
+    mn-code.html.
+      <!-- checkbox -->
+      <mn-option ng-model="house" value="stark"></mn-option>
+      <mn-option ng-model="house" value="lannister"></mn-option>
+      <mn-option ng-model="house" value="targaryen"></mn-option>
+
+    p For more details check <a href="https://github.com/minimalist-components/mn-option">mn-option docs</a>.
+
+
+
+  block scripts
+    script(src='docs/vendor.js')
+    script(src='dist/angular-mn-option.js')
+
+  script.
+    angular.module('app', [
+      'mn-option',
+    ])
+
+    angular
+      .module('app')
+      .controller('IndexController', IndexController);
+
+    function IndexController() {
+      this.test = 'lero'
+    }
+
