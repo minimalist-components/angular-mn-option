@@ -4,16 +4,11 @@ angular
 
 function mnOptionDirective($parse) {
   return {
-
-  }
-
-  const obj = {
     restrict: 'E',
     controller,
     link,
     require: 'ngModel',
   }
-  console.log(obj)
 
   function controller($scope, $element, $attrs) {
     const name = $element.attr('name')
