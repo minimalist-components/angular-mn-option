@@ -35,24 +35,26 @@ body(ng-controller='IndexController as controller')
   include github-corner
 
   form.demo.mn-layout-fullscreen.mn-layout-centered
-    //- h3.align-center tests
+    //- h3.align-center tests {{ controller.listString }}
     //- div(style='text-align: center; width: 100%')
-      mn-option.natural.flex(value='string 1')
-      mn-option.natural.flex(value='string 2')
+      mn-option.natural.flex(value='string 1' ng-model='controller.listString')
+      mn-option.natural.flex(value='string 2' ng-model='controller.listString')
+      mn-option.natural.flex(value='{{ controller.obj }}' ng-model='controller.listString')
+      mn-option.natural.flex(value='{{ controller.array }}' ng-model='controller.listString')
 
     //- .mn-layout-container
-      h3.align-center checkbox with different values
+    //-   h3.align-center checkbox with different values {{ controller.mixed ? controller.mixed : 'undefined' }}
       //- .mn-layout-column.mn-layout-sm-row(style='flex-wrap: wrap')
       div(style='text-align: center')
-        mn-option.natural.flex(placeholder='string' name='list' type='checkbox' value='test5' checked)
-        mn-option.natural.flex(placeholder='object' name='list' type='checkbox' value='{name: "lannister"}')
-        mn-option.natural.flex(placeholder='number' name='list' type='checkbox' value='5')
-        mn-option.natural.flex(placeholder='true' name='list' type='checkbox' value='true')
-        mn-option.natural.flex(placeholder='false' name='list' type='checkbox' value='false')
-        mn-option.natural.flex(placeholder='array' name='list' type='checkbox' value='["test", 5]')
-        mn-option.natural.flex(name='list' type='checkbox' value='["test", 5, {name: "test"}, name: "test"]')
-        mn-option.natural.flex(placeholder='mixed' name='list' type='checkbox' value='["test", 5, {name: "test"}, name: "test"]')
-        mn-option.natural.flex(placeholder='variable' name='list' type='checkbox' value='document')
+        mn-option.natural.flex(placeholder='string' ng-model='controller.mixed' type='checkbox' value='test5' checked)
+        mn-option.natural.flex(placeholder='object' ng-model='controller.mixed' type='checkbox' value='{name: "lannister"}')
+        mn-option.natural.flex(placeholder='number' ng-model='controller.mixed' type='checkbox' value='5')
+        mn-option.natural.flex(placeholder='true' ng-model='controller.mixed' type='checkbox' value='true')
+        mn-option.natural.flex(placeholder='false' ng-model='controller.mixed' type='checkbox' value='false')
+        mn-option.natural.flex(placeholder='array' ng-model='controller.mixed' type='checkbox' value='["test", 5]')
+        mn-option.natural.flex(placeholder='syntax error' ng-model='controller.mixed' type='checkbox' value='["test", 5, {name: "test"}, name: "test"]')
+        mn-option.natural.flex(placeholder='mixed' ng-model='controller.mixed' type='checkbox' value='["test", 5, {name: "test"}, {name: "test"}]')
+        mn-option.natural.flex(placeholder='variable' ng-model='controller.mixed' type='checkbox' value='document')
           
     .mn-layout-container
       h3.align-center radio type: {{ controller.list ? controller.list : 'undefined' }}
@@ -62,22 +64,22 @@ body(ng-controller='IndexController as controller')
         mn-option.flex(type='radio' value='baratheon' ng-model='controller.list')
         mn-option.flex(type='radio' value='lannister' ng-model='controller.list')
 
-      //- h3.align-center checkbox type: {{ controller.list2 }}
-      //- .mn-layout-column.mn-layout-sm-row
+      h3.align-center checkbox type: {{ controller.list2 }}
+      .mn-layout-column.mn-layout-sm-row
         mn-option.flex(name='list2' type='checkbox' value='ned' ng-model='controller.list2')
         mn-option.flex(name='list2' type='checkbox' value='daenerys' ng-model='controller.list2')
         mn-option.flex(name='list2' type='checkbox' value='robert' ng-model='controller.list2')
         mn-option.flex(name='list2' type='checkbox' value='cersei' ng-model='controller.list2')
       
-      //- h3.align-center natural checkbox type: {{ controller.list3 }}
-      //- .mn-layout-column.mn-layout-sm-row
+      h3.align-center natural checkbox type: {{ controller.list3 }}
+      .mn-layout-column.mn-layout-sm-row
         mn-option.natural.flex(name='list3' type='checkbox' value='ned' ng-model='controller.list3')
         mn-option.natural.flex(name='list3' type='checkbox' value='daenerys' ng-model='controller.list3')
         mn-option.natural.flex(name='list3' type='checkbox' value='robert' ng-model='controller.list3')
         mn-option.natural.flex(name='list3' type='checkbox' value='cersei' ng-model='controller.list3')
 
-      //- h3.align-center natural radio type: {{ controller.list4 ? controller.list4 : 'undefined' }}
-      //- .mn-layout-column.mn-layout-sm-row
+      h3.align-center natural radio type: {{ controller.list4 ? controller.list4 : 'undefined' }}
+      .mn-layout-column.mn-layout-sm-row
         mn-option.natural.flex(name='list4' type='radio' value='ned' ng-model='controller.list4')
         mn-option.natural.flex(name='list4' type='radio' value='daenerys' ng-model='controller.list4')
         mn-option.natural.flex(name='list4' type='radio' value='robert' ng-model='controller.list4')
@@ -100,13 +102,11 @@ body(ng-controller='IndexController as controller')
 
     mn-code.html.
       <!-- checkbox -->
-      <mn-option name="house" ng-model="house" value="stark"></mn-option>
-      <mn-option name="house" ng-model="house" value="lannister"></mn-option>
-      <mn-option name="house" ng-model="house" value="targaryen"></mn-option>
+      <mn-option ng-model="house" value="stark"></mn-option>
+      <mn-option ng-model="house" value="lannister"></mn-option>
+      <mn-option ng-model="house" value="targaryen"></mn-option>
 
     p For more details check <a href="https://github.com/minimalist-components/mn-option">mn-option docs</a>.
-
-
 
   block scripts
     script(src='docs/vendor.js')
@@ -126,5 +126,8 @@ body(ng-controller='IndexController as controller')
       this.list2 = ['daenerys', 'cersei']
       this.list3 = ['daenerys', 'robert']
       this.list4 = 'daenerys'
+
+      this.obj = {name: 'darlan'}
+      this.array = [{name: 'darlan'}, {name: 'clara'}]
     }
 

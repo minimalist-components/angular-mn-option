@@ -15,7 +15,9 @@ function mnOptionDirective($parse) {
       || $attrs.ngModel.split('.')[$attrs.ngModel.split('.').length - 1]
 
     $element.attr('name', name)
+    $element.find('input').attr('name', name)
     $element[0].removeAttribute('checked')
+    $element[0].querySelector('input').removeAttribute('checked')
   }
 
   function link(scope, element, attributes) {
@@ -24,12 +26,10 @@ function mnOptionDirective($parse) {
 
     if (!modelApplied) {
       element[0].value = modelValue
-      // console.log(modelValue)
       $parse(attributes.ngModel).assign(scope, element[0].value)
     }
 
-    element.find('input').on('change', (event) => {
-      console.log(event.target)
+    element.find('input').on('change', () => {
       $parse(attributes.ngModel).assign(scope, element[0].value)
       scope.$apply()
     })
