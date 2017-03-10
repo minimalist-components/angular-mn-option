@@ -57,27 +57,27 @@ body(ng-controller='IndexController as controller')
     .mn-layout-container
       h3.align-center radio type: {{ controller.list ? controller.list : 'undefined' }}
       .mn-layout-column.mn-layout-sm-row
-        mn-option.flex(name='list' type='radio' value='stark' ng-model='controller.list')
-        mn-option.flex(name='list' type='radio' value='targaryen' ng-model='controller.list')
-        mn-option.flex(name='list' type='radio' value='baratheon' ng-model='controller.list')
-        mn-option.flex(name='list' type='radio' value='lannister' ng-model='controller.list')
+        mn-option.flex(type='radio' value='stark' ng-model='controller.list')
+        mn-option.flex(type='radio' value='targaryen' ng-model='controller.list')
+        mn-option.flex(type='radio' value='baratheon' ng-model='controller.list')
+        mn-option.flex(type='radio' value='lannister' ng-model='controller.list')
 
-      h3.align-center checkbox type: {{ controller.list2 }}
-      .mn-layout-column.mn-layout-sm-row
+      //- h3.align-center checkbox type: {{ controller.list2 }}
+      //- .mn-layout-column.mn-layout-sm-row
         mn-option.flex(name='list2' type='checkbox' value='ned' ng-model='controller.list2')
         mn-option.flex(name='list2' type='checkbox' value='daenerys' ng-model='controller.list2')
         mn-option.flex(name='list2' type='checkbox' value='robert' ng-model='controller.list2')
         mn-option.flex(name='list2' type='checkbox' value='cersei' ng-model='controller.list2')
       
-      h3.align-center natural checkbox type: {{ controller.list3 }}
-      .mn-layout-column.mn-layout-sm-row
+      //- h3.align-center natural checkbox type: {{ controller.list3 }}
+      //- .mn-layout-column.mn-layout-sm-row
         mn-option.natural.flex(name='list3' type='checkbox' value='ned' ng-model='controller.list3')
         mn-option.natural.flex(name='list3' type='checkbox' value='daenerys' ng-model='controller.list3')
         mn-option.natural.flex(name='list3' type='checkbox' value='robert' ng-model='controller.list3')
         mn-option.natural.flex(name='list3' type='checkbox' value='cersei' ng-model='controller.list3')
 
-      h3.align-center natural radio type: {{ controller.list4 ? controller.list4 : 'undefined' }}
-      .mn-layout-column.mn-layout-sm-row
+      //- h3.align-center natural radio type: {{ controller.list4 ? controller.list4 : 'undefined' }}
+      //- .mn-layout-column.mn-layout-sm-row
         mn-option.natural.flex(name='list4' type='radio' value='ned' ng-model='controller.list4')
         mn-option.natural.flex(name='list4' type='radio' value='daenerys' ng-model='controller.list4')
         mn-option.natural.flex(name='list4' type='radio' value='robert' ng-model='controller.list4')
