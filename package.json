@@ -8,7 +8,6 @@
   ],
   "scripts": {
     "start": "scripts/start.sh",
-    "postinstall": "npm run bundle",
     "bundle": "scripts/bundle.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -33,7 +32,7 @@
   },
   "dependencies": {
     "angular": "^1.6.1",
-    "mn-option": "~0.0.7"
+    "mn-option": "~0.0.9"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
