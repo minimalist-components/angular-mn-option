@@ -1,6 +1,6 @@
 {
   "name": "angular-mn-option",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "an angular directive to mn-option",
   "main": "dist/angular-mn-option.js",
   "files": [
