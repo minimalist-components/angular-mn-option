@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "angular": "^1.6.1",
-    "mn-option": "~0.0.9"
+    "mn-option": "~0.0.10"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
