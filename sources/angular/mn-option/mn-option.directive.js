@@ -2,7 +2,7 @@ angular
   .module('mn-option')
   .directive('mnOption', mnOptionDirective)
 
-function mnOptionDirective($parse) {
+function mnOptionDirective($parse, $timeout) {
   return {
     restrict: 'E',
     controller,
@@ -25,8 +25,10 @@ function mnOptionDirective($parse) {
     const modelApplied = angular.equals(element[0].value, modelValue)
 
     if (!modelApplied) {
-      element[0].value = modelValue
-      $parse(attributes.ngModel).assign(scope, element[0].value)
+      $timeout(() => {
+        element[0].value = modelValue
+        $parse(attributes.ngModel).assign(scope, element[0].value)
+      }, 0)
     }
 
     element.find('input').on('change', () => {
@@ -34,10 +36,9 @@ function mnOptionDirective($parse) {
       scope.$apply()
     })
 
-    // const dirtyInput = element[0].querySelector('label + label')
-    // if (dirtyLabel) {
-    //   element[0].removeChild(dirtyLabel)
-    // }
-    // const input = element.find('input')
+    const dirtyLabel = element[0].querySelector('label + label')
+    if (dirtyLabel) {
+      element[0].removeChild(dirtyLabel)
+    }
   }
 }
