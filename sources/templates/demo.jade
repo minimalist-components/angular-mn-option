@@ -35,8 +35,8 @@ body(ng-controller='IndexController as controller')
   include github-corner
 
   form.demo.mn-layout-fullscreen.mn-layout-centered
-    .mn-layout-container
-      h3.align-center ng-repeat: {{ controller.list ? controller.list : 'undefined' }}
+    //- .mn-layout-container
+    //-   h3.align-center ng-repeat: {{ controller.list ? controller.list : 'undefined' }}
       .mn-layout-column.mn-layout-sm-row
         mn-option.flex.natural(ng-repeat='option in controller.list2' type='checkbox' ng-model='controller.list' value='{{ option }}')
 
@@ -61,8 +61,8 @@ body(ng-controller='IndexController as controller')
         mn-option.natural.flex(placeholder='mixed' ng-model='controller.mixed' type='checkbox' value='["test", 5, {name: "test"}, {name: "test"}]')
         mn-option.natural.flex(placeholder='variable' ng-model='controller.mixed' type='checkbox' value='document')
           
-    //- .mn-layout-container
-    //-   h3.align-center radio type: {{ controller.list ? controller.list : 'undefined' }}
+    .mn-layout-container
+      h3.align-center radio type: {{ controller.list ? controller.list : 'undefined' }}
       .mn-layout-column.mn-layout-sm-row
         mn-option.flex(type='radio' value='stark' ng-model='controller.list')
         mn-option.flex(type='radio' value='targaryen' ng-model='controller.list')
@@ -127,7 +127,7 @@ body(ng-controller='IndexController as controller')
       .controller('IndexController', IndexController);
 
     function IndexController() {
-      this.list = 'daenerys'
+      this.list = 'stark'
       this.list2 = ['daenerys', 'cersei']
       this.list3 = ['daenerys', 'robert']
       this.list4 = 'daenerys'
