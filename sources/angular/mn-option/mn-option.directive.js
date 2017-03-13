@@ -31,8 +31,10 @@ function mnOptionDirective($parse, $timeout) {
       }, 0)
     }
 
-    element.find('input').on('change', () => {
+    element.find('input').on('change', event => {
       $parse(attributes.ngModel).assign(scope, element[0].value)
+      element[0].value = element[0].value
+      event.target.blur()
       scope.$apply()
     })
 
