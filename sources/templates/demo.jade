@@ -60,6 +60,11 @@ body(ng-controller='IndexController as controller')
         mn-option.natural.flex(placeholder='syntax error' ng-model='controller.mixed' type='checkbox' value='["test", 5, {name: "test"}, name: "test"]')
         mn-option.natural.flex(placeholder='mixed' ng-model='controller.mixed' type='checkbox' value='["test", 5, {name: "test"}, {name: "test"}]')
         mn-option.natural.flex(placeholder='variable' ng-model='controller.mixed' type='checkbox' value='document')
+
+    //- .mn-layout-container
+    //-   h3.align-center single value in checkbox: {{ controller.terms }}
+      .mn-layout-column.mn-layout-sm-row
+        mn-option.flex(type='checkbox' value='true' ng-model='controller.terms')
           
     .mn-layout-container
       h3.align-center radio type: {{ controller.list ? controller.list : 'undefined' }}
